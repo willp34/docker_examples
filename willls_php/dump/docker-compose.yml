@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+    web:
+        container_name: drupal_test
+        image: drupal:8
+        ports:
+            - 82:80
+       
+        links :
+            - db:drupal_db
+        depends_on:
+            - db
+
+    db:
+        container_name: myDrupal_db
+        image: mysql
+        ports:
+            - 3307:3306
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=drupal
+            - MYSQL_ROOT_PASSWORD=root

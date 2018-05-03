@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    web:
+        container_name: my-static
+        build: ./docker-static
+        ports:
+            - 87:80
+   
